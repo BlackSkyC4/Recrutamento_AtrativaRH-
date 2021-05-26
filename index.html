@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Formulario de Cadastro</title>
+	<link rel="stylesheet" href="css/estilos.css">
+	<script type="text/javascript" src="js/cep.js"></script>
+</head>
+<body>
+	<header><h1>Formulario de Cadastro</h1></header>
+	<main>
+		<form action="" id="formulario" class="formulario" method="post">
+			<!--Nome de usuario-->
+			<div class="formulario__group" id="grupo__nome">
+				<label for="nome" class="formulario__label">Nome</label>
+				<div class="formulario_grupo-input">
+					<input type="text" name="nome" id="nome" maxlength="30" placeholder="Insira nome" class="formulario__input">
+					<i class="formulario__validacion-estado far fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">Nome invalido. Campo nome não pode levar digitos numericos</p>
+			</div>
+			<!--Fin de nome usuario-->
+
+			<!--Sobrome de usuario-->
+			<div class="formulario__group" id="grupo__sobrenome">
+				<label for="sobrenome" class="formulario__label">Sobrenome</label>
+				<div class="formulario_grupo-input">
+					<input type="text" name="sobrenome" id="sobrenome" maxlength="30" placeholder="Insira sobrenome" class="formulario__input">
+					<i class="formulario__validacion-estado far fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">Sobrenome invalido. Campo nome não pode levar digitos numericos</p>
+			</div>
+			<!--Fin de sobrnome usuario-->
+
+			<!--Email-->
+			<div class="formulario__group" id="grupo__email">
+				<label for="email" class="formulario__label">Email</label>
+				<div class="formulario_grupo-input">
+					<input type="text" name="email" id="email" maxlength="30" placeholder="Insira email" class="formulario__input">
+					<i class="formulario__validacion-estado far fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">Email invalido</p>
+			</div>
+			<!--Fin de Email-->
+
+			<!--telefone-->
+			<div class="formulario__group" id="grupo__ddd">
+				<label for="ddd" class="formulario__label">DDD</label>
+				<div class="formulario_grupo-input">
+					<input type="text" name="ddd" id="ddd" maxlength="30" placeholder="Insira ddd" class="formulario__input">
+					<i class="formulario__validacion-estado far fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">DDD invalido, só pode conter digitos numericos MAX "2"</p>
+			</div>
+			<!--Fin de DDD-->
+
+			<!--Telefone-->
+			<div class="formulario__group" id="grupo__telefone">
+				<label for="telefone" class="formulario__label">Telefone</label>
+				<div class="formulario_grupo-input">
+					<input type="text" name="telefone" id="telefone" maxlength="30" placeholder="Insira telefone" class="formulario__input">
+					<i class="formulario__validacion-estado far fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">Telefone invalido, só pode conter carateres numericos</p>
+			</div>
+			<!--Fin de Telefone-->
+
+			<!--Cpf-->
+			<div class="formulario__group" id="grupo__cpf">
+					<label for="cpf" class="formulario__label">Cpf</label>
+			<input type="text" id="cpf" name="cpf" class="formulario__input"/>
+			<p id="resposta"></p>
+			</div>
+			<!--Fin Cpf-->
+
+			<!--Linguagem-->
+			<div class="formulario__group" id="grupo__idioma">
+				<label for="telefone" class="formulario__label">Idiomas</label>
+				<div class="formulario_grupo-input">
+					<input type="checkbox" name="lingua" id="lingua" value="Portugues" class="formulario__checkbox"> Portugues
+					
+					<input type="checkbox" name="lingua" id="lingua" value="Espanhol" class="formulario__checkbox"> Espanhol
+					
+					<input type="checkbox" name="lingua" id="lingua" value="Frances" class="formulario__checkbox">
+					Frances
+				</div>
+			</div>
+			<!--fin de linguagem-->
+			
+			<!--Grupo habilitação-->
+			<div class="formulario__grupo" id="habilitacion">
+				<label class="formulario__label" id="habilitacion">Habilitação</label>
+				
+				<input type="radio" name="habilitacion" id="sim" value="sim" class="formulario__checkbox"> Sim
+				<input type="radio" name="habilitacion" id="nao" value="nao" class="formulario__checkbox"> Não
+			</div>
+			<div class="formulario__grupo" id="habilitacion">
+				<label class="formulario__label" id="habilitacion">Categoria</label>
+				
+					<select name="categoria" id="categoria" placeholder="categoria">
+					    <option value="CNH categoria A ">Sem CNH </option>
+					    <option value="CNH categoria A ">CNH categoria "A" </option>
+					    <option value="CNH categoria B ">CNH categoria "B" </option>
+					    <option value="CNH categoria C ">CNH categoria "C" </option>
+					    <option value="CNH categoria D ">CNH categoria "D" </option>
+					    <option value="CNH categoria E ">CNH categoria "E" </option>
+					</select>
+				</div>
+			<!--Fin de habilitação-->
+			<div class="formulario__group" id="grupo__telefone">
+				<label for="estado" class="formulario__label">Estado</label>
+			<select id="estado_sb" name="estado_sb" onchange="muda_estado();"></select>
+			<input id="ibge_estado_input" style="display: none;" />
+			<label for="cidade" class="formulario__label">Cidade</label>
+			<select id="cidade_sb" name="cidade_sb" onchange="muda_cidade();"></select>
+					<input  
+							id="ibge_cidade_input" 
+							style="display: none;" />
+						<select id="estado_sb2" 
+								style="display: none;"></select>
+						<select id="estado_sb3" 
+								style="display: none;"></select>
+			</div>
+
+		<div class="formulario__group" id="grupo__cep">
+			<label for="cep" class="formulario__label">CEP</label>
+	        	<input name="cep" type="text" id="cep" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" class="formulario__input" />
+	    </div>
+	    <div class="formulario__group" id="grupo__rua">
+	        <label class="formulario__label">Rua:</label>
+	        <input name="rua" type="text" id="rua" size="60" class="formulario__input"/>
+	    </div>
+	    <div class="formulario__group" id="grupo__barrio">
+	        <label class="formulario__label">Bairro:</label>
+	        <input name="bairro" type="text" id="bairro" size="40"class="formulario__input" />
+    	</div>
+
+
+		<!--Menssage Error-->
+					<div class="formulario__mensaje" id="formulario__mensaje">
+						<p><i class="fas fa-exclamation-circle"></i><b> ERRO</b> Por favor insira tudos os campos do formulario</p>
+					</div>
+				<!--Fin de menssage-->
+
+				<!--Botão-->
+				<div class="formulario__grupo formulario__grupo-btn-enviar">
+					<button type="submit" class="formulario__btn">Enviar</button>
+					<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Cadastro com Susceso</p>
+				</div>
+
+
+			<!--Fin de botão-->
+			</div>
+		</form>
+	</main>
+
+</body>
+
+<script src="js/cpf.js"></script>
+<script src="js/formulario.js"></script>
+<script type="text/javascript" src="js/cep.js"></script>
+<script type="text/javascript" src="js/local.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+
+</html>
+
+
+
